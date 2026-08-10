@@ -1,0 +1,20 @@
+﻿{
+  "name": "chainforge-sdk",
+  "version": "0.1.0",
+  "description": "Turn JSON configs into executable crypto automation. Built from the ashes of 3 dead products.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": ["crypto", "trading", "automation", "web3", "defi", "ai", "strategy"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}
