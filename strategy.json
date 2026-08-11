@@ -1,27 +1,17 @@
 {
+  "id": "demo-001",
   "name": "Demo Dust Sweeper",
   "version": "1.0.0",
-  "chains": ["solana", "base"],
-  "triggers": [
-    {
-      "type": "cron",
-      "schedule": "0 0 * * 0"
+  "triggers": [{
+    "id": "manual-1",
+    "type": "manual",
+    "config": {}
+  }],
+  "actions": [{
+    "id": "alert-1",
+    "type": "alert",
+    "config": {
+      "message": "Strategy executed successfully"
     }
-  ],
-  "actions": [
-    {
-      "type": "claim_dust",
-      "chains": ["solana", "base"]
-    },
-    {
-      "type": "alert",
-      "message": "Weekly dust cleanup completed",
-      "severity": "info"
-    }
-  ],
-  "metadata": {
-    "author": "chainforge-demo",
-    "description": "A simple strategy that demonstrates ClaimDust integration",
-    "tags": ["demo", "dust"]
-  }
+  }]
 }

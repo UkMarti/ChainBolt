@@ -1,22 +1,36 @@
-# ChainForge SDK
+﻿const fs = require('fs');
+
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+pkg.description = 'The JSON runtime for crypto automation. Plugin-first, event-driven, AI-native strategy execution.';
+pkg.keywords = ['crypto','trading','automation','web3','defi','ai','strategy','plugin','event-driven'];
+pkg.homepage = 'https://github.com/ukmarti/chainforge-sdk';
+pkg.repository = {type:'git',url:'https://github.com/ukmarti/chainforge-sdk.git'};
+pkg.bugs = {url:'https://github.com/ukmarti/chainforge-sdk/issues'};
+pkg.author = 'ukmarti';
+pkg.license = 'MIT';
+pkg.files = ['dist','src','skills','strategy.json','README.md','CONTRIBUTING.md','ROADMAP.md'];
+
+fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+
+const readme = `# ChainForge SDK
 
 The JSON runtime for crypto automation. Write strategies in JSON. Let AI generate them. Run them anywhere.
 
 ## Quick Start
 
-```bash
+` + '```bash' + `
 npx chainforge run strategy.json --dry-run
-```
+` + '```' + `
 
 ## Install
 
-```bash
+` + '```bash' + `
 npm install chainforge-sdk
-```
+` + '```' + `
 
 ## Usage
 
-```typescript
+` + '```typescript' + `
 import { ChainForgeEngine, CronTrigger, AlertAction } from "chainforge-sdk";
 
 const engine = new ChainForgeEngine({ mode: "once", dryRun: true })
@@ -32,17 +46,17 @@ engine.loadStrategy({
 });
 
 await engine.start();
-```
+` + '```' + `
 
 ## CLI
 
-```bash
+` + '```bash' + `
 # One-shot execution
 npx chainforge run strategy.json --dry-run
 
 # Persistent daemon
 npx chainforge run strategy.json --watch --dry-run=false
-```
+` + '```' + `
 
 ## Plugin Architecture
 
@@ -68,3 +82,7 @@ The skills/chainforge.md file is included. Point Claude or Cursor at it to gener
 ## License
 
 MIT
+`;
+
+fs.writeFileSync('README.md', readme);
+console.log('Done');
