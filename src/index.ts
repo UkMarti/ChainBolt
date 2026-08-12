@@ -1,6 +1,7 @@
-export { ChainForgeEngine, ExecutionMode, EngineOptions } from './engine';
+﻿export { ChainForgeEngine, ExecutionMode, EngineOptions } from './engine';
 export { PluginRegistry } from './registry';
 export { ChainForgeEventBus } from './event-bus';
 export { validateStrategy, StrategyConfigSchema } from './validator';
+export { ChainHookTrigger } from './plugins/chainhook';
 export { CronTrigger, ManualTrigger, AlertAction, WebhookAction } from './plugins/builtins';
 export * from './types';
