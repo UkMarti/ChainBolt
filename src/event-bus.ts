@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import { TriggerEvent } from './types';
 
-export class ChainForgeEventBus extends EventEmitter {
+export class ChainBoltEventBus extends EventEmitter {
   emitTrigger(event: TriggerEvent): void {
     this.emit('trigger:fire', event);
   }
