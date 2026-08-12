@@ -1,5 +1,5 @@
 import { PluginRegistry } from './registry';
-import { ChainForgeEventBus } from './event-bus';
+import { ChainBoltEventBus } from './event-bus';
 import { validateStrategy, ValidatedStrategy } from './validator';
 import { TriggerPlugin, ActionPlugin, TriggerEvent, ActionContext } from './types';
 
@@ -10,9 +10,9 @@ export interface EngineOptions {
   dryRun?: boolean;
 }
 
-export class ChainForgeEngine {
+export class ChainBoltEngine {
   private registry = new PluginRegistry();
-  private bus = new ChainForgeEventBus();
+  private bus = new ChainBoltEventBus();
   private strategies = new Map<string, ValidatedStrategy>();
   private subscriptions = new Map<string, Array<() => void>>();
   private running = false;
@@ -35,7 +35,7 @@ export class ChainForgeEngine {
     return this;
   }
 
-  get eventBus(): ChainForgeEventBus {
+  get eventBus(): ChainBoltEventBus {
     return this.bus;
   }
 
@@ -126,11 +126,11 @@ export class ChainForgeEngine {
         const result = await plugin.execute(ctx, action.config);
         this.bus.emitActionComplete(strategy.id, action.id, result);
         if (!result.success) {
-          console.error("[ChainForge] Action '" + action.id + "' failed: " + (result.error || 'Unknown error'));
+          console.error("[ChainBolt] Action '" + action.id + "' failed: " + (result.error || 'Unknown error'));
         }
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
-        console.error("[ChainForge] Action '" + action.id + "' CRASHED: " + message);
+        console.error("[ChainBolt] Action '" + action.id + "' CRASHED: " + message);
         this.bus.emitActionComplete(strategy.id, action.id, { success: false, error: message });
       }
     }
