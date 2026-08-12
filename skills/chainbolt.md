@@ -1,16 +1,16 @@
-# chainforge
+# chainbolt
 
 ## Description
-Generate and deploy crypto automation strategies using the ChainForge SDK.
+Generate and deploy crypto automation strategies using the ChainBolt SDK.
 
 ## System Requirements
 - Node.js 18+
-- npm install chainforge-sdk
+- npm install chainbolt-sdk
 
 ## Tools
 
 ### generate_strategy
-Convert natural language into a ChainForge JSON config.
+Convert natural language into a ChainBolt JSON config.
 - description (string)
 - chains (string[])
 
