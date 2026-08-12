@@ -1,25 +1,25 @@
-# ChainForge SDK
+# ChainBolt SDK
 
 The JSON runtime for crypto automation. Write strategies in JSON. Let AI generate them. Run them anywhere.
 
 ## Quick Start
 
 ```bash
-npx chainforge run strategy.json --dry-run
+npx chainbolt-sdk run strategy.json --dry-run
 ```
 
 ## Install
 
 ```bash
-npm install chainforge-sdk
+npm install chainbolt-sdk
 ```
 
 ## Usage
 
 ```typescript
-import { ChainForgeEngine, CronTrigger, AlertAction } from "chainforge-sdk";
+import { ChainBoltEngine, CronTrigger, AlertAction } from "chainbolt-sdk";
 
-const engine = new ChainForgeEngine({ mode: "once", dryRun: true })
+const engine = new ChainBoltEngine({ mode: "once", dryRun: true })
   .registerTrigger(new CronTrigger())
   .registerAction(new AlertAction());
 
@@ -28,7 +28,7 @@ engine.loadStrategy({
   name: "Demo Strategy",
   version: "1.0.0",
   triggers: [{ id: "t1", type: "cron", config: { intervalMs: 5000 } }],
-  actions: [{ id: "a1", type: "alert", config: { message: "Hello ChainForge" } }]
+  actions: [{ id: "a1", type: "alert", config: { message: "Hello ChainBolt" } }]
 });
 
 await engine.start();
@@ -38,10 +38,10 @@ await engine.start();
 
 ```bash
 # One-shot execution
-npx chainforge run strategy.json --dry-run
+npx chainbolt-sdk run strategy.json --dry-run
 
 # Persistent daemon
-npx chainforge run strategy.json --watch --dry-run=false
+npx chainbolt-sdk run strategy.json --watch --dry-run=false
 ```
 
 ## Plugin Architecture
@@ -50,7 +50,7 @@ Drop in custom triggers and actions without touching engine source code.
 
 ## AI Integration
 
-The skills/chainforge.md file is included. Point Claude or Cursor at it to generate strategies from English.
+The skills/chainbolt.md file is included. Point Claude or Cursor at it to generate strategies from English.
 
 ## Safety
 
