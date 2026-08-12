@@ -2,14 +2,14 @@
 
 import { Command } from 'commander';
 import fs from 'fs';
-import { ChainForgeEngine, CronTrigger, ManualTrigger, AlertAction, WebhookAction } from './index';
+import { ChainBoltEngine, CronTrigger, ManualTrigger, AlertAction, WebhookAction } from './index';
 
 const program = new Command();
 
 program
-  .name('chainforge')
+  .name('chainbolt-sdk')
   .description('Run crypto strategies from JSON configs')
-  .version('0.2.0');
+  .version('0.2.1');
 
 program
   .command('run <file>')
@@ -21,7 +21,7 @@ program
       const config = JSON.parse(fs.readFileSync(file, 'utf-8'));
       const mode = options.watch ? 'watch' : 'once';
 
-      const engine = new ChainForgeEngine({ mode, dryRun: options.dryRun })
+      const engine = new ChainBoltEngine({ mode, dryRun: options.dryRun })
         .registerTrigger(new CronTrigger())
         .registerTrigger(new ManualTrigger())
         .registerAction(new AlertAction())
@@ -33,7 +33,7 @@ program
         engine.eventBus.on('action:complete', (r: any) => console.log('[EVENT]', r));
       }
 
-      console.log('[ChainForge] Mode: ' + mode + ' | Dry-run: ' + options.dryRun);
+      console.log('[ChainBolt] Mode: ' + mode + ' | Dry-run: ' + options.dryRun);
       await engine.start();
     } catch (err) {
       const error = err as Error;
