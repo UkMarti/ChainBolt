@@ -1,5 +1,5 @@
 {
-  "name": "chainforge-sdk",
+  "name": "chainbolt-sdk",
   "version": "0.2.1",
   "description": "The JSON runtime for crypto automation. Plugin-first, event-driven, AI-native strategy execution.",
   "main": "dist/index.js",
@@ -33,15 +33,15 @@
     "zod": "^4.4.3"
   },
   "bin": {
-    "chainforge": "dist/cli.js"
+    "chainbolt-sdk": "dist/cli.js"
   },
-  "homepage": "https://github.com/ukmarti/chainforge-sdk",
+  "homepage": "https://github.com/ukmarti/chainbolt-sdk",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ukmarti/chainforge-sdk.git"
+    "url": "https://github.com/ukmarti/chainbolt-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/ukmarti/chainforge-sdk/issues"
+    "url": "https://github.com/ukmarti/chainbolt-sdk/issues"
   },
   "files": [
     "dist",
